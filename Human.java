@@ -9,7 +9,6 @@ public class Human {
     String surname;
     String name;
     String patronimico;
-    GenderType sex;
     int birthYear;
     int birthMonth;
     int birthDay;
@@ -34,12 +33,11 @@ public class Human {
      * @param birthDay    дата рождения
      */
 
-    public Human(String name, String surname, String patronimico, GenderType sex, int birthYear, int birthMonth,
+    public Human(String name, String surname, String patronimico, int birthYear, int birthMonth,
             int birthDay) {
         this.surname = surname;
         this.name = name;
         this.patronimico = patronimico;
-        this.sex = sex;
         this.birthYear = birthYear;
         this.birthMonth = birthMonth;
         this.birthDay = birthDay;
@@ -74,10 +72,6 @@ public class Human {
         return age;
     }
 
-    public GenderType getSex() {
-        return sex;
-    }
-
     public String getBirthday() {
         return "День рождения " + name + ' ' + surname + ": " + birthDay + '.' + birthMonth + '.' + birthYear;
 
@@ -89,10 +83,6 @@ public class Human {
 
     public void surname(String surname) {
         this.surname = surname;
-    }
-
-    public void setGender(GenderType sex) {
-        this.sex = sex;
     }
 
     public void setAge(int age) {
@@ -108,7 +98,6 @@ public class Human {
 
     public void getMarried(Human spouse) {
         this.spouse = Human.id;
-        System.out.println(this.spouse);
     }
 
     public void setMother(int mother) {
@@ -119,17 +108,17 @@ public class Human {
         this.father = father;
     }
 
-    public String getMatrimonialStatus(){
+    public String getMatrimonialStatus() {
         if (spouse == 0) {
             return "свободен";
-        }
-        else{
-            return "в браке ";
+        } else {
+            return "в браке";
         }
     }
 
     @Override
     public String toString() {
-        return "id: " + id + ", " + name + ' ' + patronimico + ' ' + surname + ", " + age + " лет" + ", " + sex + ", " + getMatrimonialStatus();
+        return "id: " + id + ", " + name + ' ' + patronimico + ' ' + surname + ", " + age + " лет" + ", "
+                + getMatrimonialStatus();
     }
 }
