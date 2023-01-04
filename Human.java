@@ -4,8 +4,9 @@ import java.time.Period;
 /**
  * Это класс Человек
  */
-public class Human {
-    protected static int id;
+public abstract class Human implements Child {
+    private static int count;
+    private int id=0;
     String surname;
     String name;
     String patronimico;
@@ -17,9 +18,12 @@ public class Human {
     int father;
     int mother;
 
+
     static {
-        id = 0;
+        Human.count = 0;
     }
+
+
 
     /**
      * Это конструктор
@@ -27,11 +31,11 @@ public class Human {
      * @param name        имя
      * @param surname     Фамилия
      * @param patronimico отчество
-     * @param sex         пол выбираем из перечисленного
      * @param birthYear   год рождения
      * @param birthMonth  месяц рождения
      * @param birthDay    дата рождения
      */
+
 
     public Human(String name, String surname, String patronimico, int birthYear, int birthMonth,
             int birthDay) {
@@ -41,8 +45,8 @@ public class Human {
         this.birthYear = birthYear;
         this.birthMonth = birthMonth;
         this.birthDay = birthDay;
-        this.age = getAge(birthYear, birthMonth, birthDay);
-        ++id;
+        this.age = setAge(birthYear, birthMonth, birthDay);
+        this.id =++Human.count;
     }
 
     public Human(String name, String surname) {
@@ -53,7 +57,7 @@ public class Human {
     public Human() {
     }
 
-    public int getAge(int birthYear, int birthMonth, int birthDay) {
+    public int setAge(int birthYear, int birthMonth, int birthDay) {
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
         LocalDate currentDate = LocalDate.now();
         int age = Period.between(birthDate, currentDate).getYears();
@@ -71,6 +75,8 @@ public class Human {
     public int getAge() {
         return age;
     }
+
+
 
     public String getBirthday() {
         return "День рождения " + name + ' ' + surname + ": " + birthDay + '.' + birthMonth + '.' + birthYear;
@@ -93,19 +99,38 @@ public class Human {
         this.birthYear = birthYear;
         this.birthMonth = birthMonth;
         this.birthDay = birthDay;
-        this.age = getAge(birthYear, birthMonth, birthDay);
+        this.age = setAge(birthYear, birthMonth, birthDay);
     }
 
     public void getMarried(Human spouse) {
-        this.spouse = Human.id;
+        this.spouse = spouse.id;
     }
 
-    public void setMother(int mother) {
-        this.mother = mother;
-    }
+     public void setMother(int mother) {
+     this.mother = mother;
+     }
 
-    public void SetFather(int father) {
-        this.father = father;
+     public void setFather(int father) {
+     this.father = father;
+     }
+
+////    @Override
+//    public String getParents() {
+//        return String.format("Мать: %s\n" +
+//                "Отец: %s", searchById(mother), searchById(father));
+//    }
+//
+////    public String searchById(int id){
+//    if (id == this.id){
+//            return "id: " + id + ", " + name + ' ' + patronimico + ' ' + surname + ", " + age + " лет";
+//        }
+//        else {
+//            return "не найдено";
+//        }
+//    }
+
+    public int getId() {
+        return id;
     }
 
     public String getMatrimonialStatus() {

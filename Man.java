@@ -23,4 +23,15 @@ public class Man extends Human {
     public void getMarried(Human wife) {
         super.getMarried(wife);
     }
+
+//    @Override
+//    public void setMother(int mother) {
+//        this.mother = mother;
+//    }
+//
+//    @Override
+//    public void setFather(int father) {
+//        this.father = father;
+//    }
+
 }

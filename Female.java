@@ -15,6 +15,7 @@ public class Female extends Human {
     public Female() {
         this.sex = GenderType.female;
     }
+
     public String toString() {
         return super.toString() + ", женщина";
     }
@@ -22,5 +23,16 @@ public class Female extends Human {
     public void getMarried(Human husband) {
         super.getMarried(husband);
     }
+
+//    @Override
+//    public void setMother(int mother) {
+//        this.mother = mother;
+//
+//    }
+//
+//    @Override
+//    public void setFather(int father) {
+//        this.father = father;
+//    }
 
 }
