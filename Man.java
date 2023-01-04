@@ -1,5 +1,5 @@
 public class Man extends Human {
-    int wife;
+    private int wife;
     private GenderType sex;
 
     public Man(String name, String surname, String patronimico, int birthYear, int birthMonth, int birthDay) {
@@ -24,7 +24,14 @@ public class Man extends Human {
         super.getMarried(wife);
     }
 
-//    @Override
+    public int getWife() {
+        return wife;
+    }
+
+    public void setWife(int wife) {
+        this.wife = wife;
+    }
+    //    @Override
 //    public void setMother(int mother) {
 //        this.mother = mother;
 //    }

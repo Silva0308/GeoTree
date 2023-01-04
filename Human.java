@@ -7,16 +7,16 @@ import java.time.Period;
 public abstract class Human implements Child {
     private static int count;
     private int id=0;
-    String surname;
-    String name;
-    String patronimico;
-    int birthYear;
+    private String surname;
+    private String name;
+    private String patronimico;
+    private int birthYear;
     int birthMonth;
-    int birthDay;
-    int age;
-    int spouse;
-    int father;
-    int mother;
+    private int birthDay;
+    private int age;
+    private int spouse;
+    private int father;
+    private int mother;
 
 
     static {
@@ -52,9 +52,11 @@ public abstract class Human implements Child {
     public Human(String name, String surname) {
         this.name = name;
         this.surname = surname;
+        this.id =++Human.count;
     }
 
     public Human() {
+        this.id =++Human.count;
     }
 
     public int setAge(int birthYear, int birthMonth, int birthDay) {
@@ -106,11 +108,27 @@ public abstract class Human implements Child {
         this.spouse = spouse.id;
     }
 
-     public void setMother(int mother) {
+    public int getSpouse() {
+        return spouse;
+    }
+
+    public void setMother(int mother) {
      this.mother = mother;
      }
 
-     public void setFather(int father) {
+    public int getFather() {
+        return father;
+    }
+
+    public int getMother() {
+        return mother;
+    }
+
+    public static void setCount(int count) {
+        Human.count = count;
+    }
+
+    public void setFather(int father) {
      this.father = father;
      }
 
